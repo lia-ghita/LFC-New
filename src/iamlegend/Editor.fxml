@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="mainPane2" maxHeight="591.0" maxWidth="848.0" prefHeight="562.0" prefWidth="848.0" stylesheets="@ui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iamlegend.EditorController">
    <children>
-      <JFXTextArea id="InputGrammarField" fx:id="inputText" layoutX="14.0" layoutY="80.0" prefHeight="185.0" prefWidth="360.0" />
+      <JFXTextArea id="InputGrammarField" fx:id="inputText" layoutX="14.0" layoutY="80.0" prefHeight="185.0" prefWidth="360.0" text="PTVMS" />
       <JFXTextArea id="ResultField" fx:id="outputText" layoutX="487.0" layoutY="80.0" prefHeight="185.0" prefWidth="360.0" />
       <JFXTextArea fx:id="TheLegendText" disable="true" editable="false" focusColor="WHITE" layoutX="14.0" layoutY="372.0" prefHeight="215.0" prefWidth="360.0" unFocusColor="WHITE" />
       <Label layoutX="372.0" layoutY="14.0" text="Apply rules" textFill="#f5f3f3">
