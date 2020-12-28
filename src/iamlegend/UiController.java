@@ -15,7 +15,12 @@ public class UiController {
 
     public String CheckGrammar(){
         String text = grammarRules.getText();
-        System.out.println(text);
+      if (text==""){
+          if (uploadGrammar.getText()!= null)
+          {
+
+          }
+        }
       //  if (GrammarHelper.ReadGrammar(text))
             return GrammarHelper.CreateResult(text);
 

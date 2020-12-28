@@ -7,7 +7,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Scanner;
 
 public class Start extends Application {
 
@@ -48,6 +52,17 @@ public class Start extends Application {
            File f =  uiController.UploadGrammar(primaryStage);
             if (f!=null){
                 uiController.uploadGrammar.setText(f.getName());
+                Scanner sc = null;
+                String str="";
+                try {
+                    sc = new Scanner(f);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                while(sc.hasNextLine()){
+                    str = sc.nextLine();
+                }
+                uiController.grammarRules.setText(str);
             }
         });
     }
