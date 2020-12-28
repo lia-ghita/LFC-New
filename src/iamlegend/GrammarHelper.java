@@ -10,6 +10,9 @@ import static java.lang.Character.isUpperCase;
 public class GrammarHelper {
 public static String multimeaProductiilor="";
 public static List<Rule> rules = new ArrayList<>();
+public static char startSymbol;
+public static char productionSeparator;
+public static char emptyChar;
 
 
      public static boolean ReadGrammar(String input){
@@ -79,8 +82,8 @@ public static List<Rule> rules = new ArrayList<>();
     {
         multimeaProductiilor = "P = { ";
 
-
-        String[] productii = grammar.split("\\$",0)  ;
+String regex ="\\"+productionSeparator;
+        String[] productii = grammar.split(regex,0)  ;
 
         for (String s:productii)
         {
@@ -110,11 +113,11 @@ public static List<Rule> rules = new ArrayList<>();
 
 
         }
-if (rules!=null) {
-    for (Rule r : rules) {
-        System.out.println(r);
-    }
-}
+            if (rules!=null) {
+                for (Rule r : rules) {
+                    System.out.println(r);
+                }
+            }
       /*  if (!char.IsUpper(productii[productii.Length - 1][0]))
         {
             resultTextBox.Text = "Partea stânga a producției " + (productii.Length).ToString() + " nu conține neterminal!";
@@ -159,17 +162,17 @@ if (rules!=null) {
     {
         String multimeaNeterminalelor = "VN = { ";
         String neterminale = "";// new String(grammar.Where(Char.IsUpper).ToArray()); // neterminalele sunt toate literele mare
-        String neterminaleObisnuite = neterminale.replace("S", "");
+        String neterminaleObisnuite = neterminale.replace(String.valueOf(startSymbol), "");
 
         // multimea neterminalelor va cuprinde neterminalele diferite de "S" si distincte intre ele, in ordine alfabetica
         String neterminaleSortate = "";//String.Concat(neterminaleObisnuite.OrderBy(c => c).Distinct());
         if (neterminaleSortate.length() != 0)
         {
             // daca mai exista si alte neterminale in afara de "S", atunci punem virgula dupa "S"
-            multimeaNeterminalelor += "S,"; // primul simbol afisat este simbolul de start
+            multimeaNeterminalelor += String.valueOf(startSymbol)+","; // primul simbol afisat este simbolul de start
             for (int i = 0; i < neterminaleSortate.length() - 1; i++)
             {
-                if (neterminaleSortate.charAt(i)!= 'S')
+                if (neterminaleSortate.charAt(i)!= startSymbol)
                     multimeaNeterminalelor += " " + neterminaleSortate.charAt(i) + ",";
             }
             multimeaNeterminalelor += " " + neterminaleSortate.charAt(neterminaleSortate.length()- 1);
@@ -177,7 +180,7 @@ if (rules!=null) {
         else
         {
             // daca nu mai exista si alte neterminale in afara de "S", atunci nu mai punem virgula dupa "S"
-            multimeaNeterminalelor += "S";
+            multimeaNeterminalelor += String.valueOf(startSymbol);
         }
 
         multimeaNeterminalelor += " } - mulțimea neterminalelor\r\n";
@@ -203,7 +206,7 @@ if (rules!=null) {
         }
 
         // multimeaTerminalelor += "λ } - mulțimea terminalelor\r\n";
-        multimeaTerminalelor += "@ } - mulțimea terminalelor\r\n";
+        multimeaTerminalelor += String.valueOf(emptyChar) + "} - mulțimea terminalelor\r\n";
 
         return multimeaTerminalelor;
     }
@@ -212,7 +215,7 @@ if (rules!=null) {
          String result="";
         // daca mai exista caractere dupa "&", atunci luam numai primul subsir dinaintea lui "&"
         String[] grammarList = input.split("&");
-        String grammar = grammarList[0].replace('@', 'λ');
+        String grammar = grammarList[0].replace(emptyChar, 'λ');
 
         // pregatirea sirurilor de caractere car vor fi afisate drept rezultat
         String resultTitle = "G = ( VN, VT, S, P )\r\n\r\n";
@@ -220,7 +223,7 @@ if (rules!=null) {
         String multimeaTerminalelor = CreateMultimeaTerminalelor(grammar);
 
         String indexProductii = "";
-        String startSimbol = "S - simbolul de start\r\n";
+        String startSimbol = String.valueOf(startSymbol) + "- simbolul de start\r\n";
 
         try {
             if (!GrammarHelper.CreateProductionsSet(grammar, indexProductii)) {
@@ -243,7 +246,7 @@ if (rules!=null) {
     }
 
     public static String markov(String input) {
-//https://stackoverflow.com/questions/32835469/how-to-implement-markovs-algorithm-in-java
+    //https://stackoverflow.com/questions/32835469/how-to-implement-markovs-algorithm-in-java
         // find the first matching rule, apply it and recurse
         for (Rule rule : rules) {
             if (rule.matches(input)) {

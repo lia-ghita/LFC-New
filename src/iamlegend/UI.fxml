@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="mainPane" maxWidth="442.0" minHeight="297.0" minWidth="442.0" prefHeight="297.0" prefWidth="442.0" stylesheets="@ui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iamlegend.UiController">
    <children>
-      <Label alignment="CENTER" layoutX="325.0" layoutY="23.0" prefHeight="55.0" prefWidth="170.0" text="LFC " textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="274.0" layoutY="14.0" prefHeight="55.0" prefWidth="170.0" text="LFC " textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXTextArea fx:id="grammarRules" layoutX="68.0" layoutY="100.0" prefHeight="175.0" prefWidth="628.0" text="S(string[] args){}$Ppublic $Tstatic $Vvoid $Mmain &amp;" />
-      <JFXButton  fx:id="uploadGrammarButton" layoutX="631.0" layoutY="333.0" prefHeight="25.0" prefWidth="65.0" text="Upload" textFill="#fffdfd" />
-      <JFXTextField fx:id="uploadGrammar" layoutX="68.0" layoutY="333.0" prefHeight="25.0" prefWidth="560.0" />
-      <JFXButton fx:id="checkGrammarButton" layoutX="341.0" layoutY="409.0" prefHeight="31.0" prefWidth="154.0" text="Check grammar" textFill="#f2f0f0" />
+      <JFXTextArea fx:id="grammarRules" layoutX="394.0" layoutY="77.0" prefHeight="229.0" prefWidth="388.0" style="-fx-border-color: white;" text="S(string[] args){}$Ppublic $Tstatic $Vvoid $Mmain &amp;">
+         <opaqueInsets>
+            <Insets bottom="1.0" left="1.0" right="1.0" top="3.0" />
+         </opaqueInsets>
+         <effect>
+            <Glow level="0.62" />
+         </effect></JFXTextArea>
+      <JFXButton fx:id="uploadGrammarButton" layoutX="717.0" layoutY="332.0" prefHeight="25.0" prefWidth="65.0" style="-fx-border-color: white;" text="Upload" textFill="#fffdfd" />
+      <JFXTextField fx:id="uploadGrammar" layoutX="399.0" layoutY="333.0" prefHeight="25.0" prefWidth="307.0" />
+      <JFXButton fx:id="checkGrammarButton" layoutX="518.0" layoutY="409.0" prefHeight="31.0" prefWidth="154.0" style="-fx-border-color: white;" text="Check grammar" textFill="#f2f0f0">
+         <effect>
+            <BoxBlur />
+         </effect></JFXButton>
+      <Label layoutX="34.0" layoutY="51.0" text="Start symbol" textFill="#f2f0f0" />
+      <TextField fx:id="startSymbol" layoutX="34.0" layoutY="78.0" prefHeight="25.0" prefWidth="282.0" text="S" />
+      <Label layoutX="34.0" layoutY="116.0" text="Production separator" textFill="#f5f4f4" />
+      <TextField fx:id="productionSeparator" layoutX="34.0" layoutY="141.0" prefHeight="25.0" prefWidth="282.0" text="\$" />
+      <Label layoutX="34.0" layoutY="179.0" text="Empty character" textFill="#fcfcfc" />
+      <TextField fx:id="emptyCharacter" layoutX="34.0" layoutY="206.0" prefHeight="25.0" prefWidth="282.0" text="\@" />
    </children>
 </AnchorPane>
