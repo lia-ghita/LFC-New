@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="mainPane" maxWidth="442.0" minHeight="297.0" minWidth="442.0" prefHeight="297.0" prefWidth="442.0" stylesheets="@ui.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iamlegend.UiController">
+<AnchorPane fx:id="mainPane" maxWidth="442.0" minHeight="297.0" minWidth="442.0" prefHeight="297.0" prefWidth="442.0" stylesheets="@ui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iamlegend.UiController">
    <children>
-      <Label alignment="CENTER" layoutX="215.0" layoutY="29.0" prefHeight="55.0" prefWidth="170.0" text="Titlu interesant" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="215.0" layoutY="29.0" prefHeight="55.0" prefWidth="170.0" text="LFC " textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXTextArea fx:id="grammarRules" layoutX="68.0" layoutY="100.0" />
-      <JFXButton fx:id="uploadGrammarButton" layoutX="467.0" layoutY="333.0" prefHeight="25.0" prefWidth="65.0" />
+      <JFXTextArea fx:id="grammarRules" layoutX="68.0" layoutY="100.0" text="S(string[] args){}$Ppublic $Tstatic $Vvoid $Mmain &amp;" />
+      <JFXButton fx:id="uploadGrammarButton" layoutX="467.0" layoutY="333.0" prefHeight="25.0" prefWidth="65.0" text="Upload" textFill="#fffdfd" />
       <JFXTextField fx:id="uploadGrammar" layoutX="68.0" layoutY="333.0" prefHeight="25.0" prefWidth="331.0" />
-      <JFXButton fx:id="checkGrammarButton" layoutX="251.0" layoutY="408.0" prefHeight="31.0" prefWidth="92.0" />
+      <JFXButton fx:id="checkGrammarButton" layoutX="215.0" layoutY="408.0" prefHeight="31.0" prefWidth="154.0" text="Check grammar" textFill="#f2f0f0" />
    </children>
 </AnchorPane>

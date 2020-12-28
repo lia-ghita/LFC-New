@@ -39,6 +39,9 @@ public class Start extends Application {
             primaryStage.setScene(secondScene);
             editorController.TheLegendText.setText(result);
         });
+        editorController.ApplyMarkov.setOnAction(event ->{
+            editorController.ApplyMarkov();
+        });
     }
 
 

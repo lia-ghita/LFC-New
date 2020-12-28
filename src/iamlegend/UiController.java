@@ -12,9 +12,9 @@ public class UiController {
     public String CheckGrammar(){
         String text = grammarRules.getText();
         System.out.println(text);
-        if (GrammarHelper.ReadGrammar(text))
+      //  if (GrammarHelper.ReadGrammar(text))
             return GrammarHelper.CreateResult(text);
-        return "";
+
     }
 
 
