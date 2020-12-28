@@ -23,7 +23,7 @@ public static List<Rule> rules = new ArrayList<>();
 
          if(input.length()==0)
          {
-             InputGrammar.ResultField.setText("Fișierul este gol!") ;
+           //  InputGrammar.ResultField.setText("Fișierul este gol!") ;
              return false;
          }
 
@@ -32,7 +32,7 @@ public static List<Rule> rules = new ArrayList<>();
          Matcher matcher = pattern.matcher(input);
          boolean matchFound = matcher.find();
          if (!matchFound){
-             InputGrammar.ResultField.setText("În șirul dat există simboluri necorespunzătoare!");
+           //  InputGrammar.ResultField.setText("În șirul dat există simboluri necorespunzătoare!");
              return false;
          }
 
@@ -42,7 +42,7 @@ public static List<Rule> rules = new ArrayList<>();
          if (input.charAt(0)!= 'S')
 
          {
-             InputGrammar.ResultField.setText("În șirul dat, primul caracter nu este simbolul de start „S”!");
+           //  InputGrammar.ResultField.setText("În șirul dat, primul caracter nu este simbolul de start „S”!");
              return false;
          }
 
@@ -51,7 +51,7 @@ public static List<Rule> rules = new ArrayList<>();
          if (!input.contains("&"))
 
          {
-             InputGrammar.ResultField.setText("Șirul de caractere nu conține simbolul „&”, care marchează sfârșitul gramaticii.");
+         //    InputGrammar.ResultField.setText("Șirul de caractere nu conține simbolul „&”, care marchează sfârșitul gramaticii.");
              return false;
          }
 
@@ -60,13 +60,13 @@ public static List<Rule> rules = new ArrayList<>();
          if (!input.contains("@"))
          {
 
-             InputGrammar.ResultField.setText("Șirul de caractere nu conține simbolul „@”, care simbolizează secvența vidă!");
+           //  InputGrammar.ResultField.setText("Șirul de caractere nu conține simbolul „@”, care simbolizează secvența vidă!");
              return false;
          }
 
          if(!input.contains("$"))
          {
-             InputGrammar.ResultField.setText("Șirul de caractere nu conține „$”, simbolul pentru separarea producțiilor!");
+            // InputGrammar.ResultField.setText("Șirul de caractere nu conține „$”, simbolul pentru separarea producțiilor!");
              return false;
          }
 
