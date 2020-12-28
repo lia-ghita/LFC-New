@@ -1,0 +1,21 @@
+*{
+    -primaryColor : #17212c;
+    -secondaryColor: rgb(43, 81, 120);
+    -textColor : white;
+
+}
+#mainPane{
+    -fx-max-width: 50px;
+    -fx-min-width: 600px;
+    -fx-max-height: 570px;
+    -fx-min-height: 510px;
+    -fx-background-color: -primaryColor;
+}
+
+jfx-text-field, .jfx-text-area{
+    -jfx-focus-color: #12bca0;
+    -jfx-unfocus-color: #bfbbbb;
+    -fx-prompt-text-fill: white;
+    -fx-text-fill : white;
+
+}
