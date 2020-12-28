@@ -13,7 +13,7 @@
          </font>
       </Label>
       <JFXTextArea fx:id="grammarRules" layoutX="68.0" layoutY="100.0" prefHeight="175.0" prefWidth="628.0" text="S(string[] args){}$Ppublic $Tstatic $Vvoid $Mmain &amp;" />
-      <JFXButton fx:id="uploadGrammarButton" layoutX="631.0" layoutY="333.0" prefHeight="25.0" prefWidth="65.0" text="Upload" textFill="#fffdfd" />
+      <JFXButton  fx:id="uploadGrammarButton" layoutX="631.0" layoutY="333.0" prefHeight="25.0" prefWidth="65.0" text="Upload" textFill="#fffdfd" />
       <JFXTextField fx:id="uploadGrammar" layoutX="68.0" layoutY="333.0" prefHeight="25.0" prefWidth="560.0" />
       <JFXButton fx:id="checkGrammarButton" layoutX="341.0" layoutY="409.0" prefHeight="31.0" prefWidth="154.0" text="Check grammar" textFill="#f2f0f0" />
    </children>
