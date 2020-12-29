@@ -246,7 +246,8 @@ String regex ="\\"+productionSeparator;
     }
 
     public static String markov(String input) {
-    //https://stackoverflow.com/questions/32835469/how-to-implement-markovs-algorithm-in-java
+        //https://stackoverflow.com/questions/32835469/how-to-implement-markovs-algorithm-in-java
+        // https://en.wikipedia.org/wiki/Markov_algorithm
         // find the first matching rule, apply it and recurse
         for (Rule rule : rules) {
             if (rule.matches(input)) {
