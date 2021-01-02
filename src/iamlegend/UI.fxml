@@ -23,7 +23,7 @@
          </effect></JFXTextArea>
       <JFXButton fx:id="uploadGrammarButton" layoutX="717.0" layoutY="332.0" prefHeight="25.0" prefWidth="65.0" style="-fx-border-color: white;" text="Upload" textFill="#fffdfd" />
       <JFXTextField fx:id="uploadGrammar" layoutX="399.0" layoutY="333.0" prefHeight="25.0" prefWidth="307.0" />
-      <JFXButton fx:id="checkGrammarButton" layoutX="518.0" layoutY="409.0" prefHeight="31.0" prefWidth="154.0" style="-fx-border-color: white;" text="Check grammar" textFill="#f2f0f0">
+      <JFXButton fx:id="checkGrammarButton" layoutX="596.0" layoutY="408.0" prefHeight="31.0" prefWidth="154.0" style="-fx-border-color: white;" text="Check grammar" textFill="#f2f0f0">
          <effect>
             <BoxBlur />
          </effect></JFXButton>
@@ -33,5 +33,10 @@
       <TextField fx:id="productionSeparator" layoutX="34.0" layoutY="141.0" prefHeight="25.0" prefWidth="282.0" text="\$" />
       <Label layoutX="34.0" layoutY="179.0" text="Empty character" textFill="#fcfcfc" />
       <TextField fx:id="emptyCharacter" layoutX="34.0" layoutY="206.0" prefHeight="25.0" prefWidth="282.0" text="\@" />
+      <JFXButton fx:id="removeChars"  layoutX="419.0" layoutY="408.0" prefHeight="31.0" prefWidth="154.0" style="-fx-border-color: white;" text="Remove useless chars" textFill="#f2f0f0">
+         <effect>
+            <BoxBlur />
+         </effect>
+      </JFXButton>
    </children>
 </AnchorPane>

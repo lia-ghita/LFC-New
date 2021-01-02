@@ -16,7 +16,7 @@ public class UiController {
     public TextField emptyCharacter;
     public TextField productionSeparator;
     public TextField startSymbol;
-
+    public JFXButton removeChars;
 
 
     public String CheckGrammar(){
@@ -30,9 +30,9 @@ public class UiController {
 
           }
         }
-      //  if (GrammarHelper.ReadGrammar(text))
+     if (GrammarHelper.ReadGrammar(text))
             return GrammarHelper.CreateResult(text);
-
+     return "Gramatica este invalida";
     }
 
     public File UploadGrammar(Stage s){
@@ -48,5 +48,9 @@ public class UiController {
         return null;
     }
 
+    public void removeChars(String s){
+        GrammarHelper.removeUselesscChars(s);
 
+
+    }
 }

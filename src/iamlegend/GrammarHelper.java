@@ -31,12 +31,15 @@ public static char emptyChar;
          }
 
 
-         Pattern pattern = Pattern.compile("^[a-zA-ZS@$&,+*\\-{}() ]+$");
+         Pattern pattern = Pattern.compile("^[a-zA-ZS@$&,+*\\-{}() \\[\\] ]+$");
          Matcher matcher = pattern.matcher(input);
          boolean matchFound = matcher.find();
          if (!matchFound){
+
            //  InputGrammar.ResultField.setText("În șirul dat există simboluri necorespunzătoare!");
              return false;
+
+
          }
 
 
@@ -263,7 +266,23 @@ String regex ="\\"+productionSeparator;
     }
 
 
+public static String removeUselesscChars(String text){
+    String result="";
 
+    // "^[a-zA-ZS@$&,+*\\-{}() \\[\\] ]+$"
+    Pattern pattern = Pattern.compile("[^a-zA-Z$&(){} ]");
+    Matcher matcher = pattern.matcher(text);
+    boolean matchFound = matcher.find();
+    if (matchFound){
+
+        result = text.replaceAll("[^a-zA-Z$&(){} ]", "");
+        System.out.println(result);
+        return result;
+
+
+    }
+    return text;
+}
 
 
 }
