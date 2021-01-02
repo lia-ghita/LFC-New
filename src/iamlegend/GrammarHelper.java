@@ -63,12 +63,12 @@ public static char emptyChar;
 
          /* daca sirul de caractere introdus sau citit nu contine secventa vida,
           * atunci se va afisa un mesaj corespunzator la rezultat */
-         if (!input.contains("@"))
+       /*  if (!input.contains("@"))
          {
 
            //  InputGrammar.ResultField.setText("Șirul de caractere nu conține simbolul „@”, care simbolizează secvența vidă!");
              return false;
-         }
+         }*/
 
          if(!input.contains("$"))
          {

@@ -48,9 +48,10 @@ public class UiController {
         return null;
     }
 
-    public void removeChars(String s){
-        GrammarHelper.removeUselesscChars(s);
-
+    public  String removeChars(String s){
+        String result = "";
+       result= GrammarHelper.removeUselesscChars(s);
+     return result;
 
     }
 }

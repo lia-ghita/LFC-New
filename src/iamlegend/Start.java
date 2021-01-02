@@ -70,7 +70,7 @@ public class Start extends Application {
         });
 
         uiController.removeChars.setOnAction(e->{
-            uiController.removeChars(uiController.grammarRules.getText());
+           uiController.grammarRules.setText(uiController.removeChars(uiController.grammarRules.getText()));
         });
     }
 
