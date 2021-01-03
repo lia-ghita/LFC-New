@@ -65,9 +65,7 @@ public class Start extends Application {
                 uiController.grammarRules.setText(str);
             }
         });
-        editorController.infix2postfix.setOnAction(e->{
-            editorController.Infix2Postfix();
-        });
+
 
         uiController.removeChars.setOnAction(e->{
            uiController.grammarRules.setText(uiController.removeChars(uiController.grammarRules.getText()));
