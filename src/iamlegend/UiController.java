@@ -13,10 +13,10 @@ public class UiController {
     public JFXButton uploadGrammarButton;
     public JFXTextField uploadGrammar;
     public JFXButton checkGrammarButton;
-    public TextField emptyCharacter;
-    public TextField productionSeparator;
-    public TextField startSymbol;
     public JFXButton removeChars;
+    public JFXTextField startSymbol;
+    public JFXTextField productionSeparator;
+    public JFXTextField emptyCharacter;
 
 
     public String CheckGrammar(){
