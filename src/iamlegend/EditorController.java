@@ -20,18 +20,4 @@ public class EditorController {
    }
 
 
-   public void Infix2Postfix(){
-       ArrayList<Exp> l = new ArrayList<Exp>();
-       Exp st=new Exp(inputText.getText());
-       l.add(st);
-
-       String str="";
-       for(String x : inputText.getText().split("\n") )
-       {
-           Exp st1=new Exp(x);
-           Infix2Postfix inf=new Infix2Postfix(st.exp);
-           str+="infix : "+st.exp+"\n"+"postfix : "+inf.returnS+"\n---------------\n";
-       }
-       outputText.setText(str);
-   }
 }
