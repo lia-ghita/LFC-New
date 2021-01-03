@@ -6,7 +6,26 @@
 }
 
 #mainPane{
+    -fx-pref-height: 500px;
+    -fx-pref-width: 800px;
     -fx-background-color: -primaryColor;
 }
 
+#startSymbol,#productionSeparator,#productionSeparator{
+    -fx-text-fill: -textColor;
+    -fx-font-size: 14;
+    -fx-padding: 0.333333em 1em 0.333333em 1em;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-background-color: rgb(49, 52, 55)
+}
+
+.jfx-text-field .input-focused-line,.jfx-text-field .input-line{
+    -fx-pref-height: 0px;
+    -fx-opacity: 0;
+}
+
+.jfx-button{
+    -fx-background-color: #12bca0;
+}
 
