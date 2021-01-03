@@ -12,8 +12,7 @@ public class EditorController {
     public JFXTextArea inputText;
     public JFXTextArea outputText;
     public JFXTextArea TheLegendText;
-    public JFXButton ApplyMarkov = new JFXButton();;
-    public JFXButton infix2postfix;
+    public JFXButton ApplyMarkov = new JFXButton();
 
     public void ApplyMarkov(){
        String text = inputText.getText();
