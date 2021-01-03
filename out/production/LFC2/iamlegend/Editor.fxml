@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="mainPane2" maxHeight="591.0" maxWidth="848.0" prefHeight="562.0" prefWidth="848.0" stylesheets="@ui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iamlegend.EditorController">
    <children>
-      <JFXTextArea id="InputGrammarField" fx:id="inputText" layoutX="14.0" layoutY="80.0" prefHeight="185.0" prefWidth="360.0" />
+      <JFXTextArea id="InputGrammarField" fx:id="inputText" layoutX="14.0" layoutY="80.0" prefHeight="185.0" prefWidth="360.0" text="PTVMS" />
       <JFXTextArea id="ResultField" fx:id="outputText" layoutX="487.0" layoutY="80.0" prefHeight="185.0" prefWidth="360.0" />
       <JFXTextArea fx:id="TheLegendText" disable="true" editable="false" focusColor="WHITE" layoutX="14.0" layoutY="372.0" prefHeight="215.0" prefWidth="360.0" unFocusColor="WHITE" />
       <Label layoutX="372.0" layoutY="14.0" text="Apply rules" textFill="#f5f3f3">
@@ -15,7 +15,7 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <JFXButton fx:id="ApplyMarkov" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="385.0" layoutY="120.0" stylesheets="@ui.css" text="Apply Markov" />
+      <JFXButton fx:id="ApplyMarkov" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="385.0" layoutY="120.0" style="-fx-border-color: white;" stylesheets="@ui.css" text="Apply Markov" />
       <Label layoutX="14.0" layoutY="54.0" prefHeight="17.0" prefWidth="90.0" text="Input Text:" textFill="#f8f8f8">
          <font>
             <Font size="17.0" />
@@ -32,5 +32,6 @@
          </font>
       </Label>
       <Label layoutX="552.0" layoutY="413.0" prefHeight="17.0" prefWidth="230.0" text="Aici o sa punem chestii inutile" wrapText="true" />
+      <JFXButton fx:id="infix2postfix"  alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="385.0" layoutY="173.0" style="-fx-border-color: white;" stylesheets="@ui.css" text="Infix to postfix" />
    </children>
 </AnchorPane>

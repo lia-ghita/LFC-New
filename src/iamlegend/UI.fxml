@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxWidth="442.0" minHeight="297.0" minWidth="442.0" prefHeight="297.0" prefWidth="442.0" stylesheets="@ui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iamlegend.UiController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@ui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iamlegend.UiController">
    <children>
       <Label alignment="CENTER" layoutX="274.0" layoutY="14.0" prefHeight="55.0" prefWidth="170.0" text="LFC " textAlignment="CENTER" textFill="WHITE">
          <font>
@@ -33,7 +37,7 @@
       <TextField fx:id="productionSeparator" layoutX="34.0" layoutY="141.0" prefHeight="25.0" prefWidth="282.0" text="\$" />
       <Label layoutX="34.0" layoutY="179.0" text="Empty character" textFill="#fcfcfc" />
       <TextField fx:id="emptyCharacter" layoutX="34.0" layoutY="206.0" prefHeight="25.0" prefWidth="282.0" text="\@" />
-      <JFXButton fx:id="removeChars"  layoutX="419.0" layoutY="408.0" prefHeight="31.0" prefWidth="154.0" style="-fx-border-color: white;" text="Remove useless chars" textFill="#f2f0f0">
+      <JFXButton fx:id="removeChars" layoutX="419.0" layoutY="408.0" prefHeight="31.0" prefWidth="154.0" style="-fx-border-color: white;" text="Remove useless chars" textFill="#f2f0f0">
          <effect>
             <BoxBlur />
          </effect>
