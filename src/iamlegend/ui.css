@@ -10,6 +10,11 @@
     -fx-pref-width: 800px;
     -fx-background-color: -primaryColor;
 }
+#mainPane2{
+    fx-pref-height: 500px;
+    -fx-pref-width: 850px;
+    -fx-background-color: -primaryColor;
+}
 
 #startSymbol,#productionSeparator,#productionSeparator{
     -fx-text-fill: -textColor;

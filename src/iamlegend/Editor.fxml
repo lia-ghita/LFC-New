@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainPane2" maxHeight="591.0" maxWidth="848.0" prefHeight="562.0" prefWidth="848.0" stylesheets="@ui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iamlegend.EditorController">
    <children>
@@ -15,7 +16,7 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <JFXButton fx:id="ApplyMarkov" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="385.0" layoutY="120.0" style="-fx-border-color: white;" stylesheets="@ui.css" text="Apply Markov" />
+      <JFXButton fx:id="ApplyMarkov" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="385.0" layoutY="120.0" stylesheets="@ui.css" text="Apply Markov" />
       <Label layoutX="14.0" layoutY="54.0" prefHeight="17.0" prefWidth="90.0" text="Input Text:" textFill="#f8f8f8">
          <font>
             <Font size="17.0" />
@@ -32,6 +33,6 @@
          </font>
       </Label>
       <Label layoutX="552.0" layoutY="413.0" prefHeight="17.0" prefWidth="230.0" text="Aici o sa punem chestii inutile" wrapText="true" />
-      <JFXButton fx:id="infix2postfix"  alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="385.0" layoutY="173.0" style="-fx-border-color: white;" stylesheets="@ui.css" text="Infix to postfix" />
+      <JFXButton fx:id="infix2postfix" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="385.0" layoutY="173.0" stylesheets="@ui.css" text="Infix to postfix" />
    </children>
 </AnchorPane>
