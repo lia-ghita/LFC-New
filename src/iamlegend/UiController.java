@@ -2,6 +2,7 @@ package iamlegend;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -17,6 +18,7 @@ public class UiController {
     public JFXTextField startSymbol;
     public JFXTextField productionSeparator;
     public JFXTextField emptyCharacter;
+    public Label dragPopUp;
 
 
     public String CheckGrammar(){

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.stage.Stage;
@@ -67,7 +68,7 @@ public class Start extends Application {
 
         uiController.grammarRules.setOnDragOver(dragEvent -> {
             if(dragEvent.getDragboard().hasFiles()){
-                System.out.println("Drago over");
+                uiController.dragPopUp.toFront();
                 dragEvent.acceptTransferModes(TransferMode.ANY);
             }
         });
@@ -82,7 +83,21 @@ public class Start extends Application {
             }
             event.setDropCompleted(success);
             event.consume();
+            uiController.dragPopUp.toBack();
         });
+        firstScene.setOnDragEntered(dragEvent -> {
+            if(dragEvent.getDragboard().hasFiles()){
+                uiController.grammarRules.setEffect(new BoxBlur());
+                uiController.dragPopUp.toFront();
+                dragEvent.acceptTransferModes(TransferMode.ANY);
+            }
+        });
+        firstScene.setOnDragExited(dragEvent ->{
+            if(dragEvent.getDragboard().hasFiles()){
+                uiController.grammarRules.setEffect(null);
+                uiController.dragPopUp.toBack();
+            }
+        } );
     }
 
     public void loadGrammar(File f){
@@ -100,6 +115,7 @@ public class Start extends Application {
             str = sc.nextLine();
         }
         uiController.grammarRules.setText(str);
+
     }
 
 

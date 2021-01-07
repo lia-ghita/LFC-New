@@ -11,6 +11,11 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@ui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iamlegend.UiController">
    <children>
+      <Label fx:id="dragPopUp" disable="true" layoutX="518.0" layoutY="178.0" text="Drop the file here" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
       <Label alignment="CENTER" layoutX="274.0" layoutY="14.0" prefHeight="55.0" prefWidth="170.0" text="LFC " textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -34,5 +39,6 @@
       <JFXTextField fx:id="startSymbol" labelFloat="true" layoutX="34.0" layoutY="82.0" prefHeight="25.0" prefWidth="282.0" promptText="Start Symbol" text="S" />
       <JFXTextField fx:id="productionSeparator" labelFloat="true" layoutX="34.0" layoutY="150.0" prefHeight="25.0" prefWidth="282.0" promptText="Production Separator" text="\$" />
       <JFXTextField fx:id="emptyCharacter" labelFloat="true" layoutX="34.0" layoutY="220.0" prefHeight="25.0" prefWidth="282.0" promptText="Empty Character" text="\@" />
+      <Label layoutX="643.0" layoutY="357.0" text="*or drag a file over text area" textFill="#a4a4a4" />
    </children>
 </AnchorPane>
