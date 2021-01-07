@@ -27,6 +27,7 @@
 
 .jfx-button{
     -fx-background-color: #12bca0;
+    -fx-text-fill: #000000
 }
 .jfx-text-area{
     -fx-background-color: -secondaryColor;
@@ -49,6 +50,7 @@
 #backButton{
     -fx-background-radius:100px;
     -fx-background-color: #9b4726;
+    -fx-text-fill: white;
 }
 #backButton:hover{
     -fx-background-radius:100px;

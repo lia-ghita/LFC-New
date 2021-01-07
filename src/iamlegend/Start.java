@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -51,21 +53,9 @@ public class Start extends Application {
         uiController.uploadGrammarButton.setOnAction(event->{
            File f =  uiController.UploadGrammar(primaryStage);
             if (f!=null){
-                uiController.uploadGrammar.setText(f.getName());
-                Scanner sc = null;
-                String str="";
-                try {
-                    sc = new Scanner(f);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                while(sc.hasNextLine()){
-                    str = sc.nextLine();
-                }
-                uiController.grammarRules.setText(str);
+                loadGrammar(f);
             }
         });
-
 
         uiController.removeChars.setOnAction(e->{
            uiController.grammarRules.setText(uiController.removeChars(uiController.grammarRules.getText()));
@@ -74,6 +64,42 @@ public class Start extends Application {
         editorController.backButton.setOnAction(event ->{
             primaryStage.setScene(firstScene);
         });
+
+        uiController.grammarRules.setOnDragOver(dragEvent -> {
+            if(dragEvent.getDragboard().hasFiles()){
+                System.out.println("Drago over");
+                dragEvent.acceptTransferModes(TransferMode.ANY);
+            }
+        });
+
+        uiController.grammarRules.setOnDragDropped(event->{
+            boolean success = false;
+            Dragboard db = event.getDragboard();
+            if(db.hasFiles()){
+                File file = db.getFiles().get(0);
+                loadGrammar(file);
+                success = true;
+            }
+            event.setDropCompleted(success);
+            event.consume();
+        });
+    }
+
+    public void loadGrammar(File f){
+        uiController.uploadGrammar.setText(f.getName());
+        Scanner sc = null;
+        String str="";
+        try {
+            sc = new Scanner(f);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        while(true){
+            assert sc != null;
+            if (!sc.hasNextLine()) break;
+            str = sc.nextLine();
+        }
+        uiController.grammarRules.setText(str);
     }
 
 
