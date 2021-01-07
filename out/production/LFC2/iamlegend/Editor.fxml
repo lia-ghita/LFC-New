@@ -33,5 +33,6 @@
          </font>
       </Label>
       <Label layoutX="552.0" layoutY="413.0" prefHeight="17.0" prefWidth="230.0" text="Aici o sa punem chestii inutile" wrapText="true" />
+      <JFXButton fx:id="backButton" buttonType="RAISED" layoutX="770.0" layoutY="20.0" text="Back" textFill="WHITE" />
    </children>
 </AnchorPane>

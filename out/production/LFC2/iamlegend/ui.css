@@ -42,4 +42,16 @@
     -fx-border-radius: 15;
     -fx-background-color: rgb(49, 52, 55)
 }
+#uploadGrammar{
+    -fx-text-fill:white;
+}
+
+#backButton{
+    -fx-background-radius:100px;
+    -fx-background-color: #9b4726;
+}
+#backButton:hover{
+    -fx-background-radius:100px;
+    -fx-background-color: #de8d72;
+}
 

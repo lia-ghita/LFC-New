@@ -70,6 +70,10 @@ public class Start extends Application {
         uiController.removeChars.setOnAction(e->{
            uiController.grammarRules.setText(uiController.removeChars(uiController.grammarRules.getText()));
         });
+
+        editorController.backButton.setOnAction(event ->{
+            primaryStage.setScene(firstScene);
+        });
     }
 
 

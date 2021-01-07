@@ -21,7 +21,7 @@
             <Insets bottom="1.0" left="1.0" right="1.0" top="3.0" />
          </opaqueInsets></JFXTextArea>
       <JFXButton fx:id="uploadGrammarButton" buttonType="RAISED" layoutX="717.0" layoutY="332.0" prefHeight="25.0" prefWidth="65.0" text="Upload" textFill="#fffdfd" />
-      <JFXTextField fx:id="uploadGrammar" layoutX="399.0" layoutY="333.0" prefHeight="25.0" prefWidth="307.0" />
+      <JFXTextField fx:id="uploadGrammar" layoutX="399.0" layoutY="333.0" prefHeight="25.0" prefWidth="307.0" unFocusColor="WHITE" />
       <JFXButton fx:id="checkGrammarButton" buttonType="RAISED" layoutX="596.0" layoutY="408.0" prefHeight="31.0" prefWidth="154.0" text="Check grammar" textFill="#f2f0f0">
          <effect>
             <BoxBlur />

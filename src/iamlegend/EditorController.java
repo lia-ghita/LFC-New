@@ -13,6 +13,7 @@ public class EditorController {
     public JFXTextArea outputText;
     public JFXTextArea TheLegendText;
     public JFXButton ApplyMarkov = new JFXButton();
+    public JFXButton backButton;
 
     public void ApplyMarkov(){
        String text = inputText.getText();
