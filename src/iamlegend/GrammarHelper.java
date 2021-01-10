@@ -13,7 +13,8 @@ public static List<Rule> rules = new ArrayList<>();
 public static char startSymbol;
 public static char productionSeparator;
 public static char emptyChar;
-
+public static  String multimeaNeterminalelor ="VN = {";
+ public static   String multimeaTerminalelor="VT = {";
 
      public static boolean ReadGrammar(String input){
          /* daca in intreg continutul introdus de la tastatura sau citit din fisier
@@ -83,6 +84,8 @@ public static char emptyChar;
 
     private static boolean CreateProductionsSet(String grammar, String indexProductii)
     {
+      /* String multimeaNeterminalelor ="VN = {";
+       String multimeaTerminalelor="VT = {";*/
         multimeaProductiilor = "P = { ";
 
 String regex ="\\"+productionSeparator;
@@ -103,7 +106,9 @@ String regex ="\\"+productionSeparator;
                 char p1 = productie.charAt(0);
                 String p2= productie.substring(1);
                  Rule r = new Rule(p1, p2);
-                multimeaProductiilor += p1 + " → " + p2 + "; ";
+                 multimeaNeterminalelor += p1 +", ";
+                 multimeaTerminalelor += p2 +", ";
+                multimeaProductiilor += p1 + " → " + p2 + ", ";
 
               GrammarHelper.rules.add(r);
 
@@ -139,7 +144,8 @@ String regex ="\\"+productionSeparator;
 
 
 
-
+        multimeaNeterminalelor += "} - multimea neterminalelor\n";
+        multimeaTerminalelor += "} - multimea terminalelor\n";
         multimeaProductiilor += " } - mulțimea producțiilor";
 
         int counter = 1;
@@ -161,7 +167,7 @@ String regex ="\\"+productionSeparator;
 
         return true;
     }
-    public static String CreateMultimeaNetereminalelor(String grammar)
+  /*  public static String CreateMultimeaNetereminalelor(String grammar)
     {
         String multimeaNeterminalelor = "VN = { ";
         String neterminale = "";// new String(grammar.Where(Char.IsUpper).ToArray()); // neterminalele sunt toate literele mare
@@ -189,9 +195,9 @@ String regex ="\\"+productionSeparator;
         multimeaNeterminalelor += " } - mulțimea neterminalelor\r\n";
 
         return multimeaNeterminalelor;
-    }
+    }*/
 
-    public static String CreateMultimeaTerminalelor(String grammar)
+   /* public static String CreateMultimeaTerminalelor(String grammar)
     {
         String multimeaTerminalelor = "VT = { ";
         String litereMici = "";//new String(grammar.Where(char.IsLower).ToArray()); // neterminalele sunt toate literele mici
@@ -212,7 +218,7 @@ String regex ="\\"+productionSeparator;
         multimeaTerminalelor += String.valueOf(emptyChar) + "} - mulțimea terminalelor\r\n";
 
         return multimeaTerminalelor;
-    }
+    }*/
 
     public static String CreateResult(String input) {
          String result="";
@@ -222,8 +228,8 @@ String regex ="\\"+productionSeparator;
 
         // pregatirea sirurilor de caractere car vor fi afisate drept rezultat
         String resultTitle = "G = ( VN, VT, S, P )\r\n\r\n";
-        String multimeaNeterminalelor = CreateMultimeaNetereminalelor(grammar);
-        String multimeaTerminalelor = CreateMultimeaTerminalelor(grammar);
+    //    String multimeaNeterminalelor = CreateMultimeaNetereminalelor(grammar);
+    //    String multimeaTerminalelor = CreateMultimeaTerminalelor(grammar);
 
         String indexProductii = "";
         String startSimbol = String.valueOf(startSymbol) + "- simbolul de start\r\n";
