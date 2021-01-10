@@ -14,7 +14,7 @@ public static char startSymbol;
 public static char productionSeparator;
 public static char emptyChar;
 public static  String multimeaNeterminalelor ="VN = {";
- public static   String multimeaTerminalelor="VT = {";
+public static  String multimeaTerminalelor="VT = {";
 
      public static boolean ReadGrammar(String input){
          /* daca in intreg continutul introdus de la tastatura sau citit din fisier
@@ -27,53 +27,40 @@ public static  String multimeaNeterminalelor ="VN = {";
 
          if(input.length()==0)
          {
-           //  InputGrammar.ResultField.setText("Fișierul este gol!") ;
+
              return false;
          }
-
 
          Pattern pattern = Pattern.compile("^[a-zA-ZS@$&,+*\\-{}() \\[\\] ]+$");
          Matcher matcher = pattern.matcher(input);
          boolean matchFound = matcher.find();
          if (!matchFound){
 
-           //  InputGrammar.ResultField.setText("În șirul dat există simboluri necorespunzătoare!");
              return false;
 
-
          }
-
 
             /* daca primul caracter din input nu este simbolul de start,
             atunci se va afisa un mesaj potrivit pentru rezultat*/
          if (input.charAt(0)!= 'S')
 
          {
-           //  InputGrammar.ResultField.setText("În șirul dat, primul caracter nu este simbolul de start „S”!");
+
              return false;
          }
 
-            /* daca sirul dat nu contine simbolul care indica sfarsitul gramaticii,
-             atunci se va afisa un mesaj corespunzator la rezultat*/
          if (!input.contains("&"))
 
          {
-         //    InputGrammar.ResultField.setText("Șirul de caractere nu conține simbolul „&”, care marchează sfârșitul gramaticii.");
+
              return false;
          }
 
-         /* daca sirul de caractere introdus sau citit nu contine secventa vida,
-          * atunci se va afisa un mesaj corespunzator la rezultat */
-       /*  if (!input.contains("@"))
-         {
 
-           //  InputGrammar.ResultField.setText("Șirul de caractere nu conține simbolul „@”, care simbolizează secvența vidă!");
-             return false;
-         }*/
 
          if(!input.contains("$"))
          {
-            // InputGrammar.ResultField.setText("Șirul de caractere nu conține „$”, simbolul pentru separarea producțiilor!");
+
              return false;
          }
 
@@ -84,11 +71,10 @@ public static  String multimeaNeterminalelor ="VN = {";
 
     private static boolean CreateProductionsSet(String grammar, String indexProductii)
     {
-      /* String multimeaNeterminalelor ="VN = {";
-       String multimeaTerminalelor="VT = {";*/
+
         multimeaProductiilor = "P = { ";
 
-String regex ="\\"+productionSeparator;
+        String regex ="\\"+productionSeparator;
         String[] productii = grammar.split(regex,0)  ;
 
         for (String s:productii)
@@ -113,12 +99,6 @@ String regex ="\\"+productionSeparator;
               GrammarHelper.rules.add(r);
 
             }
-            /*else
-            {
-                resultTextBox.Text = "Partea dreaptă a producției " + (i + 1).ToString() + " este incompletă!";
-                return false;
-            }*/
-
 
         }
             if (rules!=null) {
@@ -126,23 +106,6 @@ String regex ="\\"+productionSeparator;
                     System.out.println(r);
                 }
             }
-      /*  if (!char.IsUpper(productii[productii.Length - 1][0]))
-        {
-            resultTextBox.Text = "Partea stânga a producției " + (productii.Length).ToString() + " nu conține neterminal!";
-            return false;
-        }*/
-      /*  if (productii[productii.length - 1].substring(1).length() != 0)
-        {
-            multimeaProductiilor += productii[productii.length - 1].charAt(0) + " → " + productii[productii.length- 1].substring(1);
-        }*/
-     /*   else
-        {
-            resultTextBox.Text = "Partea dreaptă a producției " + (productii.Length).ToString() + " este incompletă!";
-            return false;
-        }*/
-
-
-
 
         multimeaNeterminalelor += "} - multimea neterminalelor\n";
         multimeaTerminalelor += "} - multimea terminalelor\n";
@@ -167,58 +130,7 @@ String regex ="\\"+productionSeparator;
 
         return true;
     }
-  /*  public static String CreateMultimeaNetereminalelor(String grammar)
-    {
-        String multimeaNeterminalelor = "VN = { ";
-        String neterminale = "";// new String(grammar.Where(Char.IsUpper).ToArray()); // neterminalele sunt toate literele mare
-        String neterminaleObisnuite = neterminale.replace(String.valueOf(startSymbol), "");
 
-        // multimea neterminalelor va cuprinde neterminalele diferite de "S" si distincte intre ele, in ordine alfabetica
-        String neterminaleSortate = "";//String.Concat(neterminaleObisnuite.OrderBy(c => c).Distinct());
-        if (neterminaleSortate.length() != 0)
-        {
-            // daca mai exista si alte neterminale in afara de "S", atunci punem virgula dupa "S"
-            multimeaNeterminalelor += String.valueOf(startSymbol)+","; // primul simbol afisat este simbolul de start
-            for (int i = 0; i < neterminaleSortate.length() - 1; i++)
-            {
-                if (neterminaleSortate.charAt(i)!= startSymbol)
-                    multimeaNeterminalelor += " " + neterminaleSortate.charAt(i) + ",";
-            }
-            multimeaNeterminalelor += " " + neterminaleSortate.charAt(neterminaleSortate.length()- 1);
-        }
-        else
-        {
-            // daca nu mai exista si alte neterminale in afara de "S", atunci nu mai punem virgula dupa "S"
-            multimeaNeterminalelor += String.valueOf(startSymbol);
-        }
-
-        multimeaNeterminalelor += " } - mulțimea neterminalelor\r\n";
-
-        return multimeaNeterminalelor;
-    }*/
-
-   /* public static String CreateMultimeaTerminalelor(String grammar)
-    {
-        String multimeaTerminalelor = "VT = { ";
-        String litereMici = "";//new String(grammar.Where(char.IsLower).ToArray()); // neterminalele sunt toate literele mici
-
-        String terminaleObisnuite = litereMici.replace("λ", ""); // literele mici fara lamda
-
-        // terminalele distincte intre ele si distincte de lamda
-        String terminaleSortateAlfabetic = terminaleObisnuite;
-                //String.Concat(terminaleObisnuite.OrderBy(c => c).Distinct());
-
-        for (int i = 0; i < terminaleSortateAlfabetic.length(); i++)
-        {
-            if (terminaleSortateAlfabetic.charAt(i) != 'λ')
-                multimeaTerminalelor += terminaleSortateAlfabetic.charAt(i) + ", ";
-        }
-
-        // multimeaTerminalelor += "λ } - mulțimea terminalelor\r\n";
-        multimeaTerminalelor += String.valueOf(emptyChar) + "} - mulțimea terminalelor\r\n";
-
-        return multimeaTerminalelor;
-    }*/
 
     public static String CreateResult(String input) {
          String result="";
@@ -228,8 +140,6 @@ String regex ="\\"+productionSeparator;
 
         // pregatirea sirurilor de caractere car vor fi afisate drept rezultat
         String resultTitle = "G = ( VN, VT, S, P )\r\n\r\n";
-    //    String multimeaNeterminalelor = CreateMultimeaNetereminalelor(grammar);
-    //    String multimeaTerminalelor = CreateMultimeaTerminalelor(grammar);
 
         String indexProductii = "";
         String startSimbol = String.valueOf(startSymbol) + "- simbolul de start\r\n";
@@ -240,9 +150,6 @@ String regex ="\\"+productionSeparator;
             }
             indexProductii += "\r\n";
             result=resultTitle + multimeaNeterminalelor + multimeaTerminalelor + startSimbol + indexProductii + multimeaProductiilor;
-            // CustomizeResult(resultTitle, multimeaNeterminalelor,indexProductii);
-
-
 
         }
         catch (Exception e){
@@ -284,7 +191,6 @@ public static String removeUselesscChars(String text){
         result = text.replaceAll("[^a-zA-Z$&(){}\\[\\] ]", "");
         System.out.println(result);
         return result;
-
 
     }
     return text;
