@@ -212,7 +212,7 @@ public class GrammarHelper {
         for(String s : List) {
             System.out.println("tacicacaluci"+s);
         }
-
+        System.out.println("Thomas likes asses");
         return text;
     }
 

@@ -25,7 +25,7 @@ public class Start extends Application {
     private EditorController editorController;
     private Scene firstScene;
     private Scene secondScene;
-
+    
     public Start(){
         try {
             firstLoader = new FXMLLoader(getClass().getResource("UI.fxml"));
