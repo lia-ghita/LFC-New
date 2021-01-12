@@ -26,15 +26,20 @@ public class UiController {
         GrammarHelper.emptyChar=emptyCharacter.getText().charAt(0);
         GrammarHelper.productionSeparator= productionSeparator.getText().charAt(0);
         String text = grammarRules.getText();
-      if (text==""){
-          if (uploadGrammar.getText()!= null)
-          {
+        if (text==""){
+            if (uploadGrammar.getText()!= null)
+            {
 
-          }
+            }
         }
-     if (GrammarHelper.ReadGrammar(text))
-            return GrammarHelper.CreateResult(text);
-     return "Gramatica este invalida";
+        if (GrammarHelper.ReadGrammar(text)){
+
+            String s = GrammarHelper.CreateResult(text);
+            GrammarHelper.removeUselesscChars(text);
+            return s;
+        }
+
+        return "Gramatica este invalida";
     }
 
     public File UploadGrammar(Stage s){
@@ -52,8 +57,8 @@ public class UiController {
 
     public  String removeChars(String s){
         String result = "";
-       result= GrammarHelper.removeUselesscChars(s);
-     return result;
+        result= GrammarHelper.removeUselesscChars(s);
+        return result;
 
     }
 }

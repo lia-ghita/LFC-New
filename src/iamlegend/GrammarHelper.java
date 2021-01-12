@@ -8,63 +8,63 @@ import java.util.regex.Pattern;
 import static java.lang.Character.isUpperCase;
 
 public class GrammarHelper {
-public static String multimeaProductiilor="";
-public static List<Rule> rules = new ArrayList<>();
-public static char startSymbol;
-public static char productionSeparator;
-public static char emptyChar;
-public static  String multimeaNeterminalelor ="VN = {";
-public static  String multimeaTerminalelor="VT = {";
+    public static String multimeaProductiilor="";
+    public static List<Rule> rules = new ArrayList<>();
+    public static char startSymbol;
+    public static char productionSeparator;
+    public static char emptyChar;
+    public static  String multimeaNeterminalelor ="VN = {";
+    public static  String multimeaTerminalelor="VT = {";
 
-     public static boolean ReadGrammar(String input){
-         /* daca in intreg continutul introdus de la tastatura sau citit din fisier
-          * exista si alte caractere in afara de
-          * majusculele alfabetului latin,
-          * de literele mici ale alfabetului latin,
-          * de "@", "$" si "&",
-          * atunci continutul nu este corespunzator si
-          * se afiseaza un mesaj potrivit pentru rezultat*/
+    public static boolean ReadGrammar(String input){
+        /* daca in intreg continutul introdus de la tastatura sau citit din fisier
+         * exista si alte caractere in afara de
+         * majusculele alfabetului latin,
+         * de literele mici ale alfabetului latin,
+         * de "@", "$" si "&",
+         * atunci continutul nu este corespunzator si
+         * se afiseaza un mesaj potrivit pentru rezultat*/
 
-         if(input.length()==0)
-         {
+        if(input.length()==0)
+        {
 
-             return false;
-         }
+            return false;
+        }
 
-         Pattern pattern = Pattern.compile("^[a-zA-ZS@$&,+*\\-{}() \\[\\] ]+$");
-         Matcher matcher = pattern.matcher(input);
-         boolean matchFound = matcher.find();
-         if (!matchFound){
+        Pattern pattern = Pattern.compile("^[a-zA-ZS@$&,+*\\-{}() \\[\\] ]+$");
+        Matcher matcher = pattern.matcher(input);
+        boolean matchFound = matcher.find();
+        if (!matchFound){
 
-             return false;
+            return false;
 
-         }
+        }
 
             /* daca primul caracter din input nu este simbolul de start,
             atunci se va afisa un mesaj potrivit pentru rezultat*/
-         if (input.charAt(0)!= 'S')
+        if (input.charAt(0)!= 'S')
 
-         {
+        {
 
-             return false;
-         }
+            return false;
+        }
 
-         if (!input.contains("&"))
+        if (!input.contains("&"))
 
-         {
+        {
 
-             return false;
-         }
+            return false;
+        }
 
 
 
-         if(!input.contains("$"))
-         {
+        if(!input.contains("$"))
+        {
 
-             return false;
-         }
+            return false;
+        }
 
-         return true;
+        return true;
 
     }
 
@@ -91,25 +91,42 @@ public static  String multimeaTerminalelor="VT = {";
             {
                 char p1 = productie.charAt(0);
                 String p2= productie.substring(1);
-                 Rule r = new Rule(p1, p2);
-                 multimeaNeterminalelor += p1 +", ";
-                 multimeaTerminalelor += p2 +", ";
+                Rule r = new Rule(p1, p2);
+
+                multimeaNeterminalelor += p1 +", ";
+
+                multimeaTerminalelor += p2 +", ";
+
                 multimeaProductiilor += p1 + " → " + p2 + ", ";
 
-              GrammarHelper.rules.add(r);
+                GrammarHelper.rules.add(r);
 
             }
 
         }
-            if (rules!=null) {
-                for (Rule r : rules) {
-                    System.out.println(r);
-                }
+        if (rules!=null) {
+            for (Rule r : rules) {
+                System.out.println(r);
             }
-
+        }
+        int last = multimeaNeterminalelor.length() - 2;
+        if (last > 0 && multimeaNeterminalelor.charAt(last) == ',') {
+            multimeaNeterminalelor = multimeaNeterminalelor.substring(0, last);
+        }
         multimeaNeterminalelor += "} - multimea neterminalelor\n";
+
+        int last1 = multimeaTerminalelor.length() - 2;
+        if (last1 > 0 && multimeaTerminalelor.charAt(last1) == ',') {
+            multimeaTerminalelor = multimeaTerminalelor.substring(0, last1);
+        }
         multimeaTerminalelor += "} - multimea terminalelor\n";
+
+        int last2 = multimeaProductiilor.length() - 2;
+        if (last2 > 0 && multimeaProductiilor.charAt(last2) == ',') {
+            multimeaProductiilor = multimeaProductiilor.substring(0, last2);
+        }
         multimeaProductiilor += " } - mulțimea producțiilor";
+
 
         int counter = 1;
         for(int i=0; i<multimeaProductiilor.length(); i++)
@@ -133,7 +150,7 @@ public static  String multimeaTerminalelor="VT = {";
 
 
     public static String CreateResult(String input) {
-         String result="";
+        String result="";
         // daca mai exista caractere dupa "&", atunci luam numai primul subsir dinaintea lui "&"
         String[] grammarList = input.split("&");
         String grammar = grammarList[0].replace(emptyChar, 'λ');
@@ -154,7 +171,7 @@ public static  String multimeaTerminalelor="VT = {";
         }
         catch (Exception e){
 
-                result="Separarea producțiilor nu s-a realizat corespunzător!\r\nVerificați poziția simbolului „$”!";
+            result="Separarea producțiilor nu s-a realizat corespunzător!\r\nVerificați poziția simbolului „$”!";
 
         }
 
@@ -167,7 +184,7 @@ public static  String multimeaTerminalelor="VT = {";
         // find the first matching rule, apply it and recurse
         for (Rule rule : rules) {
             if (rule.matches(input)) {
-              String temp = rule.apply(input);
+                String temp = rule.apply(input);
                 return markov (temp);
             }
 
@@ -175,26 +192,29 @@ public static  String multimeaTerminalelor="VT = {";
         return input;
         // no rule matched so just return the input text
         // - this is the terminating case for the recursion
-      // return input;
+        // return input;
     }
 
 
-public static String removeUselesscChars(String text){
-    String result="";
+    public static String removeUselesscChars(String text){
 
-    // "^[a-zA-ZS@$&,+*\\-{}() \\[\\] ]+$"
-    Pattern pattern = Pattern.compile("[^a-zA-Z$&(){}\\[\\] ]");
-    Matcher matcher = pattern.matcher(text);
-    boolean matchFound = matcher.find();
-    if (matchFound){
+        String result="";
+        ArrayList<String> List = new ArrayList<String>();
+        Pattern pattern1 = Pattern.compile("[^A-Z]");
+        Matcher matcher1 = null;
+        for (Rule rule : rules) {
+            matcher1 = pattern1.matcher(rule.getTo());
+            if(!matcher1.find()){
+                List.add(String.valueOf(rule.getFrom()));
+            }
 
-        result = text.replaceAll("[^a-zA-Z$&(){}\\[\\] ]", "");
-        System.out.println(result);
-        return result;
+        }
+        for(String s : List) {
+            System.out.println("tacicacaluci"+s);
+        }
 
+        return text;
     }
-    return text;
-}
 
 
 }
