@@ -199,20 +199,27 @@ public class GrammarHelper {
     public static String removeUselesscChars(String text){
 
         String result="";
-        ArrayList<String> List = new ArrayList<String>();
+        ArrayList<String> PotentialImposters = new ArrayList<String>();
+        ArrayList<String> NotImposter = new ArrayList<String>();
         Pattern pattern1 = Pattern.compile("[^A-Z]");
         Matcher matcher1 = null;
         for (Rule rule : rules) {
             matcher1 = pattern1.matcher(rule.getTo());
             if(!matcher1.find()){
-                List.add(String.valueOf(rule.getFrom()));
+                PotentialImposters.add(String.valueOf(rule.getFrom()));
             }
+            else{
+                NotImposter.add(String.valueOf(rule.getFrom()));
+            }
+        }
+        for(String s : NotImposter) {
+            System.out.println("Not Imposter"+s);
+        }
 
+        for(String s : PotentialImposters) {
+            System.out.println("LUCI FOUND"+s);
         }
-        for(String s : List) {
-            System.out.println("tacicacaluci"+s);
-        }
-        System.out.println("Thomas likes asses");
+        System.out.println("Luci likes Roxana");
         return text;
     }
 
