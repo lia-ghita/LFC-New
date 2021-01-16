@@ -54,7 +54,7 @@ public class GrammarHelper {
     public static boolean CreateProductionsSet(String grammar, String indexProductii)
     {
         List <Character> sources = new ArrayList<>();
-        List <String> targets = new ArrayList<>();
+        List <Character> targets = new ArrayList<>();
         multimeaProductiilor = "P = { ";
         String regex ="\\$";
         String[] productii = grammar.split(regex,0)  ;
@@ -73,14 +73,21 @@ public class GrammarHelper {
                 Rule r = new Rule(p1, p2);
                 if (!sources.contains(p1))
                     sources.add(p1);
-             //   multimeaNeterminalelor += p1 +", ";
-                multimeaTerminalelor += p2 +", ";
+                for (int i=0; i<p2.length(); i++) {
+                    if(!targets.contains(p2.charAt(i)) && Character.isLowerCase(p2.charAt(i))) {
+                        targets.add(p2.charAt(i));
+                        System.out.println("Luci pute2: ");
+                        System.out.println(p2.charAt(i));
+                    }
+                }
+                //   multimeaNeterminalelor += p1 +", ";
+//                multimeaTerminalelor += p2 +", ";
                 multimeaProductiilor += p1 + " → " + p2 + ", ";
                 GrammarHelper.rules.add(r);
             }
         }
         for (Character c: sources)
-        multimeaNeterminalelor +=c+",";
+            multimeaNeterminalelor +=c+",";
         if (rules!=null) {
             for (Rule r : rules) {
                 System.out.println(r);
@@ -90,12 +97,21 @@ public class GrammarHelper {
         if (last > 0 && multimeaNeterminalelor.charAt(last) == ',') {
             multimeaNeterminalelor = multimeaNeterminalelor.substring(0, last);
         }
-       multimeaNeterminalelor += "} - multimea neterminalelor\n";
+        multimeaNeterminalelor += "} - multimea neterminalelor\n";
+        for(Character ter : targets){
+
+            multimeaTerminalelor += ter + ", ";
+        }
         int last1 = multimeaTerminalelor.length() - 2;
         if (last1 > 0 && multimeaTerminalelor.charAt(last1) == ',') {
             multimeaTerminalelor = multimeaTerminalelor.substring(0, last1);
         }
-        multimeaTerminalelor += "} - multimea terminalelor\n";
+//        int last1 = multimeaTerminalelor.length() - 2;
+//        if (last1 > 0 && multimeaTerminalelor.charAt(last1) == ',') {
+//            multimeaTerminalelor = multimeaTerminalelor.substring(0, last1);
+//        }
+//        multimeaTerminalelor += "} - multimea terminalelor\n";
+
         int last2 = multimeaProductiilor.length() - 2;
         if (last2 > 0 && multimeaProductiilor.charAt(last2) == ',') {
             multimeaProductiilor = multimeaProductiilor.substring(0, last2);
