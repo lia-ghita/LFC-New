@@ -25,7 +25,7 @@ public class Start extends Application {
     private EditorController editorController;
     private Scene firstScene;
     private Scene secondScene;
-    
+
     public Start(){
         try {
             firstLoader = new FXMLLoader(getClass().getResource("UI.fxml"));
@@ -52,14 +52,14 @@ public class Start extends Application {
         });
 
         uiController.uploadGrammarButton.setOnAction(event->{
-           File f =  uiController.UploadGrammar(primaryStage);
+            File f =  uiController.UploadGrammar(primaryStage);
             if (f!=null){
                 loadGrammar(f);
             }
         });
 
         uiController.removeChars.setOnAction(e->{
-           uiController.grammarRules.setText(uiController.removeChars(uiController.grammarRules.getText()));
+            uiController.grammarRules.setText(uiController.removeChars(uiController.grammarRules.getText()));
         });
 
         editorController.backButton.setOnAction(event ->{

@@ -56,9 +56,9 @@ public class UiController {
     }
 
     public  String removeChars(String s){
-      String result="";
-      GrammarHelper.CreateResult(s);
-      result = GrammarHelper.removeUselesscChars(s);
+        String result="";
+        GrammarHelper.CreateResult(s);
+        result = GrammarHelper.removeUselesscChars(s);
         return result;
     }
 }
