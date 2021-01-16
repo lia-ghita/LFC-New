@@ -24,7 +24,7 @@ public class UiController {
     public String CheckGrammar(){
         GrammarHelper.startSymbol=startSymbol.getText().charAt(0);
         GrammarHelper.emptyChar=emptyCharacter.getText().charAt(0);
-        GrammarHelper.productionSeparator= productionSeparator.getText().charAt(0);
+        GrammarHelper.productionSeparator= productionSeparator.getText();
         String text = grammarRules.getText();
         if (text==""){
             if (uploadGrammar.getText()!= null)
@@ -56,9 +56,9 @@ public class UiController {
     }
 
     public  String removeChars(String s){
-        String result = "";
-        result= GrammarHelper.removeUselesscChars(s);
+      String result="";
+      GrammarHelper.CreateResult(s);
+      result = GrammarHelper.removeUselesscChars(s);
         return result;
-
     }
 }

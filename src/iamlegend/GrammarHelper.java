@@ -2,6 +2,7 @@ package iamlegend;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,7 +12,7 @@ public class GrammarHelper {
     public static String multimeaProductiilor="";
     public static List<Rule> rules = new ArrayList<>();
     public static char startSymbol;
-    public static char productionSeparator;
+    public static String productionSeparator;
     public static char emptyChar;
     public static  String multimeaNeterminalelor ="VN = {";
     public static  String multimeaTerminalelor="VT = {";
@@ -69,12 +70,12 @@ public class GrammarHelper {
     }
 
 
-    private static boolean CreateProductionsSet(String grammar, String indexProductii)
+    public static boolean CreateProductionsSet(String grammar, String indexProductii)
     {
 
         multimeaProductiilor = "P = { ";
 
-        String regex ="\\"+productionSeparator;
+        String regex ="\\$";
         String[] productii = grammar.split(regex,0)  ;
 
         for (String s:productii)
@@ -195,33 +196,63 @@ public class GrammarHelper {
         // return input;
     }
 
+    public static String removeUselesscChars(String text) {
 
-    public static String removeUselesscChars(String text){
+        String result = "";
 
-        String result="";
-        ArrayList<String> PotentialImposters = new ArrayList<String>();
-        ArrayList<String> NotImposter = new ArrayList<String>();
-        Pattern pattern1 = Pattern.compile("[^A-Z]");
-        Matcher matcher1 = null;
-        for (Rule rule : rules) {
-            matcher1 = pattern1.matcher(rule.getTo());
-            if(!matcher1.find()){
-                PotentialImposters.add(String.valueOf(rule.getFrom()));
+        List<Character> kj = new ArrayList<>();
+        List<Character> kj1 = new ArrayList<>();
+        List<Character> temp = new ArrayList<>();
+        List<Rule> temprules = new ArrayList<>();
+
+
+//        Map
+//                <String, String> finalRules;
+//
+//        finalRules.put("S", "are");
+//        finalRules.put("M", "mere");
+//
+//        finalRules.get("M")
+
+        for (Rule r : rules) {
+            boolean hasLowerCase = r.getTo().equals(r.getTo().toLowerCase());
+            if (hasLowerCase)
+                if (!kj1.contains(r.getFrom()))
+                    kj1.add(r.getFrom());
+        }
+        while (kj != kj1) {
+            kj = kj1;
+            for (Rule r : rules) {
+                char target = r.getTo().charAt(0);
+                for (Character c : kj1) {
+                    if (target == c) {
+                        if (!temp.contains(r.getFrom()) && !kj1.contains(r.getFrom()))
+                            temp.add(r.getFrom());
+                    }
+                }
+
             }
-            else{
-                NotImposter.add(String.valueOf(rule.getFrom()));
-            }
+            kj1.addAll(temp);
         }
-        for(String s : NotImposter) {
-            System.out.println("Not Imposter"+s);
+        assert kj1 != null;
+        temprules.addAll(rules) ;
+        for (Rule r : rules) {
+            if (!kj1.contains(r.getFrom()))
+                temprules.remove(r);
+
+        }
+        rules = temprules;
+            for (Rule r1 : rules) {
+                result += r1.getFrom() + r1.getTo() + "$";
+            }
+            result += "&";
+            for (Character item : kj1) {
+                System.out.println(item + ", ");
+            }
+            return result;
         }
 
-        for(String s : PotentialImposters) {
-            System.out.println("LUCI FOUND"+s);
-        }
-        System.out.println("Luci likes Roxana");
-        return text;
-    }
+
 
 
 }
