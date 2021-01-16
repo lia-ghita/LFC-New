@@ -1,5 +1,6 @@
 package iamlegend;
 
+import javax.xml.transform.Source;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +53,8 @@ public class GrammarHelper {
     }
     public static boolean CreateProductionsSet(String grammar, String indexProductii)
     {
+        List <Character> sources = new ArrayList<>();
+        List <String> targets = new ArrayList<>();
         multimeaProductiilor = "P = { ";
         String regex ="\\$";
         String[] productii = grammar.split(regex,0)  ;
@@ -68,12 +71,16 @@ public class GrammarHelper {
                 char p1 = productie.charAt(0);
                 String p2= productie.substring(1);
                 Rule r = new Rule(p1, p2);
-                multimeaNeterminalelor += p1 +", ";
+                if (!sources.contains(p1))
+                    sources.add(p1);
+             //   multimeaNeterminalelor += p1 +", ";
                 multimeaTerminalelor += p2 +", ";
                 multimeaProductiilor += p1 + " → " + p2 + ", ";
                 GrammarHelper.rules.add(r);
             }
         }
+        for (Character c: sources)
+        multimeaNeterminalelor +=c+",";
         if (rules!=null) {
             for (Rule r : rules) {
                 System.out.println(r);
@@ -83,7 +90,7 @@ public class GrammarHelper {
         if (last > 0 && multimeaNeterminalelor.charAt(last) == ',') {
             multimeaNeterminalelor = multimeaNeterminalelor.substring(0, last);
         }
-        multimeaNeterminalelor += "} - multimea neterminalelor\n";
+       multimeaNeterminalelor += "} - multimea neterminalelor\n";
         int last1 = multimeaTerminalelor.length() - 2;
         if (last1 > 0 && multimeaTerminalelor.charAt(last1) == ',') {
             multimeaTerminalelor = multimeaTerminalelor.substring(0, last1);
@@ -156,7 +163,6 @@ public class GrammarHelper {
         List<Character> InvalidSources = new ArrayList<>();
         List<Rule> temprules = new ArrayList<>();
         List<Rule> tempFinalRules = new ArrayList<>();
-
         for (Rule r : rules) {
             boolean hasLowerCase = r.getTo().equals(r.getTo().toLowerCase());
             if (hasLowerCase)
@@ -184,7 +190,7 @@ public class GrammarHelper {
                 System.out.println(r);
                 temprules.remove(r);
                 if(!InvalidSources.contains(r.getFrom()))
-                InvalidSources.add(r.getFrom());
+                    InvalidSources.add(r.getFrom());
             }
         }
         tempFinalRules.addAll(temprules);
@@ -202,7 +208,6 @@ public class GrammarHelper {
             System.out.println(c);
         }
         System.out.println("Sfarsit lista invalide");
-
         rules = tempFinalRules;
 //        temprules.addAll(rules);
 //
