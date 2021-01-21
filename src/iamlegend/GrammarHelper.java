@@ -76,7 +76,6 @@ public class GrammarHelper {
                 for (int i=0; i<p2.length(); i++) {
                     if(!targets.contains(p2.charAt(i)) && Character.isLowerCase(p2.charAt(i))) {
                         targets.add(p2.charAt(i));
-                        System.out.println("Luci pute2: ");
                         System.out.println(p2.charAt(i));
                     }
                 }
@@ -86,26 +85,30 @@ public class GrammarHelper {
                 GrammarHelper.rules.add(r);
             }
         }
-        for (Character c: sources)
-            multimeaNeterminalelor +=c+",";
-        if (rules!=null) {
-            for (Rule r : rules) {
-                System.out.println(r);
-            }
+        for (Character c: sources) {
+            multimeaNeterminalelor += c + ", ";
         }
         int last = multimeaNeterminalelor.length() - 2;
         if (last > 0 && multimeaNeterminalelor.charAt(last) == ',') {
             multimeaNeterminalelor = multimeaNeterminalelor.substring(0, last);
         }
-        multimeaNeterminalelor += "} - multimea neterminalelor\n";
-        for(Character ter : targets){
+        multimeaNeterminalelor += "} - multimea neterminalelor \n";
 
+        if (rules!=null) {
+            for (Rule r : rules) {
+                System.out.println(r);
+            }
+        }
+
+
+        for(Character ter : targets){
             multimeaTerminalelor += ter + ", ";
         }
         int last1 = multimeaTerminalelor.length() - 2;
         if (last1 > 0 && multimeaTerminalelor.charAt(last1) == ',') {
             multimeaTerminalelor = multimeaTerminalelor.substring(0, last1);
         }
+        multimeaTerminalelor += "} - multimea terminalelor \n";
 //        int last1 = multimeaTerminalelor.length() - 2;
 //        if (last1 > 0 && multimeaTerminalelor.charAt(last1) == ',') {
 //            multimeaTerminalelor = multimeaTerminalelor.substring(0, last1);
@@ -116,7 +119,7 @@ public class GrammarHelper {
         if (last2 > 0 && multimeaProductiilor.charAt(last2) == ',') {
             multimeaProductiilor = multimeaProductiilor.substring(0, last2);
         }
-        multimeaProductiilor += " } - mulțimea producțiilor";
+        multimeaProductiilor += " } - mulțimea producțiilor \n";
         int counter = 1;
         for(int i=0; i<multimeaProductiilor.length(); i++)
         {
