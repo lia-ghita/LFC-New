@@ -100,7 +100,6 @@ public class GrammarHelper {
             }
         }
 
-
         for(Character ter : targets){
             multimeaTerminalelor += ter + ", ";
         }
