@@ -59,7 +59,9 @@ public class Start extends Application {
         });
 
         uiController.removeChars.setOnAction(e->{
-            uiController.grammarRules.setText(uiController.removeChars(uiController.grammarRules.getText()));
+            String text= uiController.grammarRules.getText();
+            uiController.grammarRules.setText("");
+            uiController.grammarRules.setText(uiController.removeChars(text));
         });
 
         editorController.backButton.setOnAction(event ->{

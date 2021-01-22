@@ -17,40 +17,24 @@ public class GrammarHelper {
     public static char emptyChar;
     public static  String multimeaNeterminalelor ="VN = {";
     public static  String multimeaTerminalelor="VT = {";
+
+
+
     public static boolean ReadGrammar(String input){
-        /* daca in intreg continutul introdus de la tastatura sau citit din fisier
-         * exista si alte caractere in afara de
-         * majusculele alfabetului latin,
-         * de literele mici ale alfabetului latin,
-         * de "@", "$" si "&",
-         * atunci continutul nu este corespunzator si
-         * se afiseaza un mesaj potrivit pentru rezultat*/
-        if(input.length()==0)
-        {
-            return false;
-        }
+
+        if(input.length()==0) return false;
         Pattern pattern = Pattern.compile("^[a-zA-ZS@$&,+*\\-{}() \\[\\] ]+$");
         Matcher matcher = pattern.matcher(input);
         boolean matchFound = matcher.find();
-        if (!matchFound){
-            return false;
-        }
-            /* daca primul caracter din input nu este simbolul de start,
-            atunci se va afisa un mesaj potrivit pentru rezultat*/
-        if (input.charAt(0)!= 'S')
-        {
-            return false;
-        }
-        if (!input.contains("&"))
-        {
-            return false;
-        }
-        if(!input.contains("$"))
-        {
-            return false;
-        }
+        if (!matchFound) return false;
+        if (input.charAt(0)!= 'S') return false;
+        if (!input.contains("&")) return false;
+        if(!input.contains("$")) return false;
         return true;
     }
+
+
+
     public static boolean CreateProductionsSet(String grammar, String indexProductii)
     {
         List <Character> sources = new ArrayList<>();
@@ -76,8 +60,7 @@ public class GrammarHelper {
                 for (int i=0; i<p2.length(); i++) {
                     if(!targets.contains(p2.charAt(i)) && Character.isLowerCase(p2.charAt(i))) {
                         targets.add(p2.charAt(i));
-                        System.out.println("Luci pute2: ");
-                        System.out.println(p2.charAt(i));
+
                     }
                 }
                 //   multimeaNeterminalelor += p1 +", ";
@@ -88,11 +71,7 @@ public class GrammarHelper {
         }
         for (Character c: sources)
             multimeaNeterminalelor +=c+",";
-        if (rules!=null) {
-            for (Rule r : rules) {
-                System.out.println(r);
-            }
-        }
+
         int last = multimeaNeterminalelor.length() - 2;
         if (last > 0 && multimeaNeterminalelor.charAt(last) == ',') {
             multimeaNeterminalelor = multimeaNeterminalelor.substring(0, last);
@@ -106,11 +85,8 @@ public class GrammarHelper {
         if (last1 > 0 && multimeaTerminalelor.charAt(last1) == ',') {
             multimeaTerminalelor = multimeaTerminalelor.substring(0, last1);
         }
-//        int last1 = multimeaTerminalelor.length() - 2;
-//        if (last1 > 0 && multimeaTerminalelor.charAt(last1) == ',') {
-//            multimeaTerminalelor = multimeaTerminalelor.substring(0, last1);
-//        }
-//        multimeaTerminalelor += "} - multimea terminalelor\n";
+
+       multimeaTerminalelor += "} - multimea terminalelor\n";
 
         int last2 = multimeaProductiilor.length() - 2;
         if (last2 > 0 && multimeaProductiilor.charAt(last2) == ',') {
@@ -167,9 +143,7 @@ public class GrammarHelper {
             }
         }
         return input;
-        // no rule matched so just return the input text
-        // - this is the terminating case for the recursion
-        // return input;
+
     }
     public static String removeUselesscChars(String text) {
         String result = "";
@@ -188,13 +162,19 @@ public class GrammarHelper {
         while (kj != kj1) {
             kj = kj1;
             for (Rule r : rules) {
-                char target = r.getTo().charAt(0);
-                for (Character c : kj1) {
-                    if (target == c) {
+              boolean existsImpure = false;
+              String targetString = r.getTo();
+           for (int i = 0; i<targetString.length(); i++){
+               char character= targetString.charAt(i);
+               if ((isUpperCase(character)) && (!kj1.contains(character)));
+               existsImpure = true;
+           }
+                if (!existsImpure)
+
                         if (!temp.contains(r.getFrom()) && !kj1.contains(r.getFrom()))
                             temp.add(r.getFrom());
-                    }
-                }
+
+
             }
             kj1.addAll(temp);
         }
@@ -202,8 +182,6 @@ public class GrammarHelper {
         temprules.addAll(rules) ;
         for (Rule r : rules) {
             if (!kj1.contains(r.getFrom())) {
-                System.out.println("regula stearsa 1");
-                System.out.println(r);
                 temprules.remove(r);
                 if(!InvalidSources.contains(r.getFrom()))
                     InvalidSources.add(r.getFrom());
@@ -211,30 +189,16 @@ public class GrammarHelper {
         }
         tempFinalRules.addAll(temprules);
         for (Rule r2 : temprules){
-            for(Character c : InvalidSources) {
-                if (r2.getTo().contains(String.valueOf(c))) {
-                    System.out.println("regula stearsa 2");
-                    System.out.println(r2);
+            for(Character c : InvalidSources)
+                if (r2.getTo().contains(String.valueOf(c)))
                     tempFinalRules.remove(r2);
-                }
-            }
         }
-        System.out.println("Lista Ch. invalide: ");
-        for (Character c : InvalidSources){
-            System.out.println(c);
-        }
-        System.out.println("Sfarsit lista invalide");
         rules = tempFinalRules;
-//        temprules.addAll(rules);
-//
-//        rules = temprules;
         for (Rule r1 : rules) {
             result += r1.getFrom() + r1.getTo() + "$";
         }
         result += "&";
-//        for (Character item : kj1) {
-//            System.out.println(item + ", ");
-//        }
+
         return result;
     }
 }
