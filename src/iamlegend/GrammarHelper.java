@@ -184,19 +184,19 @@ public class GrammarHelper {
                     kj1.add(r.getFrom());
         }
 
-        boolean b = true;
+        boolean valid = true;
         while (kj != kj1) {
             kj = kj1;
             for (Rule r : rules) {
-                b = true;
+                valid = true;
                 char target = r.getTo().charAt(0);
                 for(int i=0;i<r.getTo().length();i++){
                     target = r.getTo().charAt(i);
                     if (!(kj1.contains(target))) {
-                        b = false;
+                        valid = false;
                     }
                 }
-                if(b){
+                if(valid){
                     if(!kj1.contains(r.getFrom())){
                         kj1.add(r.getFrom());
                     }
