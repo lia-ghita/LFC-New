@@ -19,7 +19,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXTextArea fx:id="grammarRules" layoutX="394.0" layoutY="77.0" prefHeight="229.0" prefWidth="388.0" text="SaB$SAA$ScS$Aa$AcAa$ABb$BaC$BCB$BDab$CCBaD$CDa$CBB$DBC$DBbC$DDB&amp;">
+      <JFXTextArea fx:id="grammarRules" layoutX="394.0" layoutY="77.0" prefHeight="229.0" prefWidth="388.0" text="Sab$SAA$ScS$Aa$AcAa$ABb$BaC$BCB$BDab$CCBaD$CDa$CBB$DBC$DBbC$DDB&amp;">
          <opaqueInsets>
             <Insets bottom="1.0" left="1.0" right="1.0" top="3.0" />
          </opaqueInsets></JFXTextArea>
