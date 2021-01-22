@@ -64,6 +64,7 @@ public class Start extends Application {
 
         editorController.backButton.setOnAction(event ->{
             primaryStage.setScene(firstScene);
+            editorController.TheLegendText.clear();
         });
 
         uiController.grammarRules.setOnDragOver(dragEvent -> {
