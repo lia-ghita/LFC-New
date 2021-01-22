@@ -173,7 +173,7 @@ public class GrammarHelper {
         String result = "";
         List<Character> kj = new ArrayList<>();
         List<Character> listOfValidElements = new ArrayList<>();
-        List<Character> temp = new ArrayList<>();
+
         List<Character> InvalidSources = new ArrayList<>();
         List<Rule> temprules = new ArrayList<>();
         List<Rule> tempFinalRules = new ArrayList<>();
