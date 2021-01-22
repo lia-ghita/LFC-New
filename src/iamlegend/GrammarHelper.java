@@ -172,7 +172,7 @@ public class GrammarHelper {
     public static String removeUselesscChars(String text) {
         String result = "";
         List<Character> kj = new ArrayList<>();
-        List<Character> kj1 = new ArrayList<>();
+        List<Character> listOfValidElements = new ArrayList<>();
         List<Character> temp = new ArrayList<>();
         List<Character> InvalidSources = new ArrayList<>();
         List<Rule> temprules = new ArrayList<>();
@@ -180,25 +180,25 @@ public class GrammarHelper {
         for (Rule r : rules) {
             boolean hasLowerCase = r.getTo().equals(r.getTo().toLowerCase());
             if (hasLowerCase)
-                if (!kj1.contains(r.getFrom()))
-                    kj1.add(r.getFrom());
+                if (!listOfValidElements.contains(r.getFrom()))
+                    listOfValidElements.add(r.getFrom());
         }
 
         boolean valid = true;
-        while (kj != kj1) {
-            kj = kj1;
+        while (kj != listOfValidElements) {
+            kj = listOfValidElements;
             for (Rule r : rules) {
                 valid = true;
                 char target = r.getTo().charAt(0);
                 for(int i=0;i<r.getTo().length();i++){
                     target = r.getTo().charAt(i);
-                    if (!(kj1.contains(target))) {
+                    if (!(listOfValidElements.contains(target))) {
                         valid = false;
                     }
                 }
                 if(valid){
-                    if(!kj1.contains(r.getFrom())){
-                        kj1.add(r.getFrom());
+                    if(!listOfValidElements.contains(r.getFrom())){
+                        listOfValidElements.add(r.getFrom());
                     }
                 }
             }
@@ -206,10 +206,10 @@ public class GrammarHelper {
 
 
 
-        assert kj1 != null;
+        assert listOfValidElements != null;
         temprules.addAll(rules) ;
         for (Rule r : rules) {
-            if (!kj1.contains(r.getFrom())) {
+            if (!listOfValidElements.contains(r.getFrom())) {
                 System.out.println("regula stearsa 1");
                 System.out.println(r);
                 temprules.remove(r);
