@@ -183,19 +183,29 @@ public class GrammarHelper {
                 if (!kj1.contains(r.getFrom()))
                     kj1.add(r.getFrom());
         }
+
+        boolean b = true;
         while (kj != kj1) {
             kj = kj1;
             for (Rule r : rules) {
+                b = true;
                 char target = r.getTo().charAt(0);
-                for (Character c : kj1) {
-                    if (target == c) {
-                        if (!temp.contains(r.getFrom()) && !kj1.contains(r.getFrom()))
-                            temp.add(r.getFrom());
+                for(int i=0;i<r.getTo().length();i++){
+                    target = r.getTo().charAt(i);
+                    if (!(kj1.contains(target))) {
+                        b = false;
+                    }
+                }
+                if(b){
+                    if(!kj1.contains(r.getFrom())){
+                        kj1.add(r.getFrom());
                     }
                 }
             }
-            kj1.addAll(temp);
         }
+
+
+
         assert kj1 != null;
         temprules.addAll(rules) ;
         for (Rule r : rules) {
