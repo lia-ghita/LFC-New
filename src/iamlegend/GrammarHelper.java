@@ -108,8 +108,6 @@ public class GrammarHelper {
 //        }
 //        multimeaTerminalelor += "} - multimea terminalelor\n";
 
-       multimeaTerminalelor += "} - multimea terminalelor\n";
-
         int last2 = multimeaProductiilor.length() - 2;
         if (last2 > 0 && multimeaProductiilor.charAt(last2) == ',') {
             multimeaProductiilor = multimeaProductiilor.substring(0, last2);
