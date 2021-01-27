@@ -85,7 +85,11 @@ public class GrammarHelper {
                 GrammarHelper.rules.add(r);
             }
         }
-        multimeaNeterminalelor += "VN = {";
+        multimeaNeterminalelor += "VN' = {";
+        StringBuilder sb = new StringBuilder(multimeaNeterminalelor);
+        sb.deleteCharAt(2);
+//        System.out.println(sb.toString());
+        multimeaNeterminalelor = sb.toString();
         for (Character c: sources) {
             multimeaNeterminalelor += c + ", "; //parcurgem si afisam neterminale
         }
@@ -96,7 +100,13 @@ public class GrammarHelper {
         multimeaNeterminalelor += "} - multimea neterminalelor\n";
 
 
-        multimeaTerminalelor += "VT = {";
+
+
+        multimeaTerminalelor += "VT' = {";
+        StringBuilder sb1 = new StringBuilder(multimeaTerminalelor);
+        sb1.deleteCharAt(2);
+//        System.out.println(sb.toString());
+        multimeaTerminalelor = sb1.toString();
         for(Character ter : targets){
 
             multimeaTerminalelor += ter + ", "; //parcurgem si afisam terminale
