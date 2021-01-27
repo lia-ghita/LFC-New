@@ -15,8 +15,8 @@ public class GrammarHelper {
     public static char startSymbol;
     public static String productionSeparator;
     public static char emptyChar;
-    public static  String multimeaNeterminalelor ="VN = {";
-    public static  String multimeaTerminalelor="VT = {";
+    public static  String multimeaNeterminalelor = "";
+    public static  String multimeaTerminalelor = "";
     public static boolean ReadGrammar(String input){
         /* daca in intreg continutul introdus de la tastatura sau citit din fisier
          * exista si alte caractere in afara de
@@ -58,7 +58,7 @@ public class GrammarHelper {
         multimeaProductiilor = "P = { ";
         String regex ="\\$";
         String[] productii = grammar.split(regex,0)  ;
-        for (String s:productii)
+        for (String s:productii) //generam multimea productiilor
         {
             String productie = s;
          /*   if (!char.IsUpper(productie[0]))
@@ -85,20 +85,24 @@ public class GrammarHelper {
                 GrammarHelper.rules.add(r);
             }
         }
+        multimeaNeterminalelor += "VN = {";
         for (Character c: sources) {
-            multimeaNeterminalelor += c + ", ";
+            multimeaNeterminalelor += c + ", "; //parcurgem si afisam neterminale
         }
         int last = multimeaNeterminalelor.length() - 2;
-        if (last > 0 && multimeaNeterminalelor.charAt(last) == ',') {
+        if (last > 0 && multimeaNeterminalelor.charAt(last) == ',') { //pentru afisare in Legend
             multimeaNeterminalelor = multimeaNeterminalelor.substring(0, last);
         }
         multimeaNeterminalelor += "} - multimea neterminalelor\n";
+
+
+        multimeaTerminalelor += "VT = {";
         for(Character ter : targets){
 
-            multimeaTerminalelor += ter + ", ";
+            multimeaTerminalelor += ter + ", "; //parcurgem si afisam terminale
         }
         int last1 = multimeaTerminalelor.length() - 2;
-        if (last1 > 0 && multimeaTerminalelor.charAt(last1) == ',') {
+        if (last1 > 0 && multimeaTerminalelor.charAt(last1) == ',') { //pentru afisare in Legend
             multimeaTerminalelor = multimeaTerminalelor.substring(0, last1);
         }
         multimeaTerminalelor += "} - multimea terminalelor \n";
@@ -114,7 +118,7 @@ public class GrammarHelper {
         }
         multimeaProductiilor += " } - mulțimea producțiilor";
         int counter = 1;
-        for(int i=0; i<multimeaProductiilor.length(); i++)
+        for(int i=0; i<multimeaProductiilor.length(); i++) //pentru afisare multimeaProductiilor in Legend
         {
             if (multimeaProductiilor.charAt(i) == '→')
             {
@@ -168,35 +172,35 @@ public class GrammarHelper {
         // return input;
     }
     public static String removeUselesscChars(String text) {
-        String result = "";
-        List<Character> kj = new ArrayList<>();
-        List<Character> listOfValidElements = new ArrayList<>();
+        String result = ""; //lista pentru output valide
+        List<Character> kj = new ArrayList<>(); //lista in care salvam validele
+        List<Character> listOfValidElements = new ArrayList<>(); //prima lista dupa parcurgere terminale
 
-        List<Character> InvalidSources = new ArrayList<>();
-        List<Rule> temprules = new ArrayList<>();
-        List<Rule> tempFinalRules = new ArrayList<>();
+        List<Character> InvalidSources = new ArrayList<>(); //unde stocam toate simbolurile inutile
+        List<Rule> temprules = new ArrayList<>();  //lista temporara
+        List<Rule> tempFinalRules = new ArrayList<>(); //lista finala pe care o trecem in lista de rules
         for (Rule r : rules) {
             boolean hasLowerCase = r.getTo().equals(r.getTo().toLowerCase());
-            if (hasLowerCase)
-                if (!listOfValidElements.contains(r.getFrom()))
+            if (hasLowerCase) //prima data le parcurgem pe cele terminale
+                if (!listOfValidElements.contains(r.getFrom())) //apoi le salvam in lista, daca au terminale
                     listOfValidElements.add(r.getFrom());
         }
 
         boolean valid = true;
         while (kj != listOfValidElements) {
-            kj = listOfValidElements;
-            for (Rule r : rules) {
+            kj = listOfValidElements; //salvam in lista kj productiile valide
+            for (Rule r : rules) { //pentru regulile
                 valid = true;
                 char target = r.getTo().charAt(0);
-                for(int i=0;i<r.getTo().length();i++){
+                for(int i=0;i<r.getTo().length();i++){ //verificam regulile salvam in target
                     target = r.getTo().charAt(i);
                     if (!(listOfValidElements.contains(target))) {
-                        valid = false;
+                        valid = false; //daca nu corespunde, este invalid
                     }
                 }
                 if(valid){
                     if(!listOfValidElements.contains(r.getFrom())){
-                        listOfValidElements.add(r.getFrom());
+                        listOfValidElements.add(r.getFrom()); //adaugam elementele valide
                     }
                 }
             }
@@ -207,34 +211,34 @@ public class GrammarHelper {
         assert listOfValidElements != null;
         temprules.addAll(rules) ;
         for (Rule r : rules) {
-            if (!listOfValidElements.contains(r.getFrom())) {
+            if (!listOfValidElements.contains(r.getFrom())) {//parcurgem regulilele invalide
                 System.out.println("regula stearsa 1");
                 System.out.println(r);
-                temprules.remove(r);
+                temprules.remove(r); //prin r le stergem din lista temporara
                 if(!InvalidSources.contains(r.getFrom()))
-                    InvalidSources.add(r.getFrom());
+                    InvalidSources.add(r.getFrom()); //adaugam in lista cele sterse
             }
         }
-        tempFinalRules.addAll(temprules);
+        tempFinalRules.addAll(temprules); //adaugam in lista rezultatele valide
         for (Rule r2 : temprules){
-            for(Character c : InvalidSources) {
-                if (r2.getTo().contains(String.valueOf(c))) {
+            for(Character c : InvalidSources) { //parcurgem lista invalida
+                if (r2.getTo().contains(String.valueOf(c))) { //sa afisam regulile sterse
                     System.out.println("regula stearsa 2");
                     System.out.println(r2);
                     tempFinalRules.remove(r2);
                 }
             }
         }
-        System.out.println("Lista Ch. invalide: ");
+        System.out.println("Lista Ch. invalide: "); //afisam lista intreaga cu regulile sterse
         for (Character c : InvalidSources){
             System.out.println(c);
         }
         System.out.println("Sfarsit lista invalide");
-        rules = tempFinalRules;
+        rules = tempFinalRules; //adaugam in lista rules rezultatele finale valide din lista temporara
 //        temprules.addAll(rules);
 //
 //        rules = temprules;
-        for (Rule r1 : rules) {
+        for (Rule r1 : rules) { //afisam rezultatul final fara simbolurile inutile
             result += r1.getFrom() + r1.getTo() + "$";
         }
         result += "&";
